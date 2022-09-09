@@ -1,7 +1,7 @@
 {
   "name": "pixelnomicon",
   "version": "0.1.0",
-  "proxy": "http://gusspencer.tech/bk/wp-json/wp/v2/",
+  "proxy": "http://gusspencer.tech/bk/wp-json/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",

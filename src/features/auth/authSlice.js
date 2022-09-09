@@ -38,8 +38,9 @@ export const login = createAsyncThunk('auth/login',
 				error.message ||
 				error.toString()
 			return thunkAPI.rejectWithValue(message)
-	}
+		}
 })
+
 
 export const logout = createAsyncThunk('auth/logout',
 	async () => {
