@@ -1,7 +1,7 @@
 
 import axios from 'axios'
 
-const API_URL = '/user/me/'
+//const API_URL = '/user/me/'
 
 const updateUser = async (userInfoData, token) => {
 	const config = {
@@ -10,7 +10,7 @@ const updateUser = async (userInfoData, token) => {
 		}
 	}
 	
-	const response = await axios.post(API_URL, userInfoData, config)
+	const response = await axios.post('http://gusspencer.tech/bk/wp-json/wp/v2/users/me', userInfoData, config)
 	
 	return response.data
 }

@@ -8,10 +8,11 @@ const initialState = {
 	isError: false,
 	isSuccess: false,
 	isLoading: false,
-	message: ''
+	message: '',
 }
 
-export const register = createAsyncThunk('auth/register',
+export const register = createAsyncThunk(
+	'auth/register',
 	async (user, thunkAPI) => {
 		try {
 			return await authService.register(user)
@@ -26,7 +27,8 @@ export const register = createAsyncThunk('auth/register',
 	}
 })
 
-export const login = createAsyncThunk('auth/login',
+export const login = createAsyncThunk(
+	'auth/login',
 	async (user, thunkAPI) => {
 		try {
 			return await authService.login(user)

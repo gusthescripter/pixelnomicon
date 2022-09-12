@@ -3,15 +3,15 @@ import { useDispatch} from 'react-redux'
 import { updateUser } from '../features/userInfo/userInfoSlice'
 
 function UserInfoForm() {
-	const [text, setText] = useState('')
+	const [name, setName] = useState('')
 	
 	const dispatch = useDispatch()
 
 	const onSubmit = e => {
 		e.preventDefault()
 		
-		dispatch(updateUser({text}))
-		setText('')
+		dispatch(updateUser({name}))
+		setName('')
 	}
 	
 	return (
@@ -20,7 +20,7 @@ function UserInfoForm() {
 			<form onSubmit={onSubmit}>
 				<div>
 					<label htmlFor="text">Name</label>
-					<input type="text" name='text' id='text' value={text} onChange={(e) => setText(e.target.value)} />
+					<input type="text" name='name' id='name' value={name} onChange={(e) => setName(e.target.value)} />
 					
 				</div>
 				<div>
