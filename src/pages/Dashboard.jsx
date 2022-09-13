@@ -10,11 +10,14 @@ function Dashboard() {
 	const dispatch = useDispatch()
 	
 	const {user} = useSelector((state) => state.auth)
-	const {usersInfo, isLoading, isError, message} = useSelector((state) => state.userInfo)
+	const {usersInfo, isLoading, isError, message} = useSelector(
+		(state) => state.userInfo
+	)
 	
 	useEffect(() => {
 		if(isError) {
 			console.log(message)
+			
 		}
 		
 		if(!user) {
@@ -28,6 +31,8 @@ function Dashboard() {
 		return () => {
 			dispatch(reset())
 		}
+		
+	
 	}, [user, navigate, isError, message, dispatch])
 	
 	if(isLoading) {

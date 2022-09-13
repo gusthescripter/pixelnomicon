@@ -6,8 +6,8 @@ import axios from 'axios'
 const updateUser = async (userInfoData, token) => {
 	const config = {
 		headers: {
-			Authorization: `Bearer ${token}`
-		}
+			Authorization: `Bearer ${token}`,
+		},
 	}
 	
 	const response = await axios.post('http://gusspencer.tech/bk/wp-json/wp/v2/users/me', userInfoData, config)
@@ -18,8 +18,8 @@ const updateUser = async (userInfoData, token) => {
 const getUser = async (token) => {
 	const config = {
 		headers: {
-			Authorization: `Bearer ${token}`
-		}
+			Authorization: `Bearer ${token}`,
+		},
 	}
 	
 	const response = await axios.get('http://gusspencer.tech/bk/wp-json/wp/v2/users/me', config)

@@ -29,7 +29,7 @@ export const updateUser = createAsyncThunk(
 
 export const getUser = createAsyncThunk(
 	'usersInfo/getInfo',
-	async (userInfoData, thunkAPI) => {
+	async (_, thunkAPI) => {
 		try {
 			const token = thunkAPI.getState().auth.user.token
 			return await userInfoService.getUser(token)
