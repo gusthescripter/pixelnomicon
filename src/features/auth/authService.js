@@ -5,7 +5,7 @@ const API_URL = 'http://gusspencer.tech/bk/wp-json/wp/v2/users'
 const headers = {"headers": {"Authorization": "Bearer "}}
 
 const register = async (userData) => {
-	const response = await axios.post(API_URL, userData, headers)
+	await axios.post(API_URL, userData, headers)
 	const keep = await axios.post('http://gusspencer.tech/bk/wp-json/jwt-auth/v1/token', userData)
 	
 	if(keep.data) {

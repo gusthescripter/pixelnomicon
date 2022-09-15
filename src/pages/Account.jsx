@@ -1,17 +1,17 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import PostForm from '../components/PostForm'
+import UserInfoForm from '../components/UserInfoForm'
 import Spinner from '../components/Spinner'
-import { getPosts, reset } from '../features/posts/postSlice'
+import { getUser, reset } from '../features/userInfo/userInfoSlice'
 
-function Dashboard() {
+function Account() {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	
 	const {user} = useSelector((state) => state.auth)
-	const {posts, isLoading, isError, message} = useSelector(
-		(state) => state.posts
+	const {usersInfo, isLoading, isError, message} = useSelector(
+		(state) => state.userInfo
 	)
 	
 	useEffect(() => {
@@ -25,7 +25,7 @@ function Dashboard() {
 		}
 		
 		if(user) {
-			dispatch(getPosts())
+			dispatch(getUser())
 		}
 		
 		return () => {
@@ -41,21 +41,16 @@ function Dashboard() {
 	
 	return (
 		<>
-			<h1>Dashboard</h1>			
+			<h1>Account</h1>			
 			
 			<section>
+				{usersInfo && usersInfo.name}
 			</section>
-			<PostForm />
-			<section>
-				{
-					posts.map(post => (
-						<h4>{ post.title.rendered }</h4>
-					))
-				}
-			</section>
+			<UserInfoForm />			
 		</>
 	)
 }
 
 
-export default Dashboard
+export default Account
+
