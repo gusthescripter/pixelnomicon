@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const API_URL = 'http://gusspencer.tech/bk/wp-json/wp/v2/users'
-const headers = {"headers": {"Authorization": "Bearer "}}
+const headers = {"headers": {"Authorization": ""}}
 
 const register = async (userData) => {
 	await axios.post(API_URL, userData, headers)

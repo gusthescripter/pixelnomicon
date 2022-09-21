@@ -6,6 +6,8 @@ import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Account from './pages/Account'
+import Posts from './pages/Posts'
+import SinglePost from './pages/SinglePost'
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/account' element={<Account />} />
+        <Route path='/posts' element={<Posts />} />
+        <Route path='/singlepost/:id' element={<SinglePost />} />
       </Routes>
     </div>
   </Router>

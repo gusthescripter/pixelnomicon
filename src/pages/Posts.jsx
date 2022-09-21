@@ -1,15 +1,16 @@
-import { useEffect } from 'react'
+
+
 import { useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import PostForm from '../components/PostForm'
 import PostItem from '../components/PostItem'
-import Spinner from '../components/Spinner'
+import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { getPosts, reset } from '../features/posts/postSlice'
 
-function Dashboard() {
-	const navigate = useNavigate()
-	const dispatch = useDispatch()
+function Posts() {
 	
+	const dispatch = useDispatch()
+	const navigate = useNavigate()
 	const {user} = useSelector((state) => state.auth)
 	const {posts, isLoading, isError, message} = useSelector(
 		(state) => state.posts
@@ -36,27 +37,23 @@ function Dashboard() {
 	
 	}, [user, navigate, isError, message, dispatch])
 	
-	if(isLoading) {
-		return <Spinner />
-	}
-	
 	return (
-		<>
-			<h1>Dashboard</h1>			
-			
+		<main>
 			<section>
-			</section>
-			<PostForm />
-			<section>
+				<h1 className="text-4xl">Posts</h1>
+				<section>
 				{
 					posts.map(post => (
+					<div>
 						<PostItem key={post.id} post={post} />
+						<Link to={`/singlepost/${post.id}`} key={post.id}>info</Link>
+					</div>
 					))
 				}
 			</section>
-		</>
+			</section>
+		</main>
 	)
 }
 
-
-export default Dashboard
+export default Posts
