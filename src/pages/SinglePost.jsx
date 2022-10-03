@@ -1,15 +1,18 @@
-import { useNavigate } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { getPosts, reset } from '../features/posts/postSlice'
-import React, { useState, useEffect } from 'react'
 
-function SinglePost() {
+import { useNavigate, useParams, Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { getPost, reset } from '../features/singlePost/singlePostSlice'
+import React, { useEffect } from 'react'
+import Spinner from '../components/Spinner'
+
+function SinglePost({ singlePost }) {
+  const params  = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  
   const {user} = useSelector((state) => state.auth)
-	const {posts, isLoading, isError, message} = useSelector(
-		(state) => state.posts
+  const {singlePosts, isLoading, isError, message} = useSelector(
+		(state) => state.singlePosts
 	)
   
   useEffect(() => {
@@ -23,7 +26,7 @@ function SinglePost() {
 		}
 		
 		if(user) {
-			dispatch(getPosts())
+		  dispatch(getPost(params.id))
 		}
 		
 		return () => {
@@ -31,12 +34,16 @@ function SinglePost() {
 		}
 		
 	
-	}, [user, navigate, isError, message, dispatch])
-
+  }, [user, navigate, isError, message, dispatch, params])
+  if (isLoading) {
+    return <Spinner />
+  }
   return (
     <div>
-      <h4>{posts.title.rendered}</h4>
-      <p>{posts.content.rendered}</p>
+      <Link to='/posts'>back</Link>
+      <h3>{singlePosts.title && singlePosts.title.rendered}</h3>
+    
+      <p>{singlePosts.content && singlePosts.content.rendered}</p>
     </div>
   )
 }

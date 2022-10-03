@@ -47,13 +47,7 @@ function Dashboard() {
 			<section>
 			</section>
 			<PostForm />
-			<section>
-				{
-					posts.map(post => (
-						<PostItem key={post.id} post={post} />
-					))
-				}
-			</section>
+			
 		</>
 	)
 }
