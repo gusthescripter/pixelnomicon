@@ -3,6 +3,17 @@ import axios from 'axios'
 
 const API_URL = 'http://gusspencer.tech/bk/wp-json/wp/v2/posts/'
 
+const updatePost = async (postData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+
+  const response = await axios.post(API_URL, postData, config)
+
+  return response.data
+}
 
 const getPost = async (postId, token) => {
     const config = {
@@ -30,6 +41,7 @@ const deletePost = async (postId, token) => {
 }
 
 const singlePostService = {
+  updatePost,
   getPost,
   deletePost,
 }

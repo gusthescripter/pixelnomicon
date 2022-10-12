@@ -8,7 +8,8 @@ function PostItem({ post }) {
     <div>
       <h4>{post.title.rendered}</h4>
       <p>{post.excerpt.rendered}</p>
-      <Link to={`/singlepost/${post.id}`}>info</Link>
+      <Link to={`/singlepost/${post.id}`}>view</Link>
+      <Link to={`/editpost/${post.id}`}>edit</Link>
     </div>
   )
 }

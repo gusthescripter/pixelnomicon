@@ -45,6 +45,7 @@ function Account() {
 			
 			<section>
 				{usersInfo && usersInfo.name}
+				<p> {usersInfo.description} </p>
 			</section>
 			<UserInfoForm />			
 		</>

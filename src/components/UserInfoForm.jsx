@@ -3,34 +3,66 @@ import { useDispatch} from 'react-redux'
 import { updateUser } from '../features/userInfo/userInfoSlice'
 
 function UserInfoForm() {
-	const [name, setName] = useState('')
-	
-	const dispatch = useDispatch()
+	const [formData, setFormData] = useState({
+		name: '',
+		description: ''
+	})
+  
+  const { name, description } = formData
 
-	const onSubmit = e => {
-		e.preventDefault()
-		
-		dispatch(updateUser({name}))
-		setName('')
-	}
-	
-	return (
-		<section>
-			<h2>User Info</h2>
-			<form onSubmit={onSubmit}>
-				<div>
-					<label htmlFor="text">Name</label>
-					<input type="text" name='name' id='name' value={name} onChange={(e) => setName(e.target.value)} />
-					
-				</div>
-				<div>
-					<button className='btn' type='submit'>
-						Submit
-					</button>
-				</div>
-			</form>
-		</section>
-	)
+  const dispatch = useDispatch()
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }))
+  }
+  
+  const onSubmit = (e) => {
+    e.preventDefault()
+
+    const userInfoData = {
+      name,
+      description,
+    }
+
+    dispatch(updateUser(userInfoData))
+    
+  }
+
+  return (
+    <section className='form'>
+      <form onSubmit={onSubmit}>
+        <div className='form-group'>
+          <label htmlFor='text'>Name</label>
+          <input
+            type='text'
+            name='name'
+            id='name'
+            value={name}
+            onChange={onChange}
+          />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='text'>Description</label>
+          <textarea
+            type='text'
+            name='description'
+            id='description'
+            value={description}
+            onChange={onChange}>
+          </textarea>
+        </div>
+        
+        <div className='form-group'>
+          <button className='btn btn-block' type='submit'>
+            Update
+          </button>
+        </div>
+      </form>
+    </section>
+  )
 }
 
 export default UserInfoForm

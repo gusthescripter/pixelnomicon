@@ -8,6 +8,7 @@ import Register from './pages/Register'
 import Account from './pages/Account'
 import Posts from './pages/Posts'
 import SinglePost from './pages/SinglePost'
+import EditPost from './pages/EditPost'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path='/account' element={<Account />} />
         <Route path='/posts' element={<Posts />} />
         <Route path='/singlepost/:id' element={<SinglePost />} />
+        <Route path='/editpost/:id' element={<EditPost />} />
       </Routes>
     </div>
   </Router>
