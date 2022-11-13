@@ -10,7 +10,7 @@ const initialState = {
 }
 
 export const updatePost = createAsyncThunk(
-  'posts/update',
+  'singlePosts/update',
   async (postData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token
@@ -78,7 +78,7 @@ export const singlePostSlice = createSlice({
       .addCase(updatePost.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
-        state.posts.push(action.payload)
+        state.singlePosts = action.payload
       })
       .addCase(updatePost.rejected, (state, action) => {
         state.isLoading = false

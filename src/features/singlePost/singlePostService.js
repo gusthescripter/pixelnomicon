@@ -10,7 +10,7 @@ const updatePost = async (postData, token) => {
     },
   }
 
-  const response = await axios.post(API_URL, postData, config)
+  const response = await axios.post(API_URL + '55', postData, config)
 
   return response.data
 }
